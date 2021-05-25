@@ -13,76 +13,10 @@ async function main() {
   const testStringOriginal = "ああいい";
   const testString = iconv.encode(testStringOriginal, "windows-31j");
   const obj = {
-    mobileAddress: "",
-    memberSei: testStringOriginal,
-    memberMei: "",
-    memberSeiKana: "",
-    memberMeiKana: "",
-    nickname: "",
-    sexCode: "02",
-    birthday: "",
-    phone: "",
-    mobilePhone: "",
-    mobilePassword: "",
-    pcPassword: "abc123123",
+    name: testStringOriginal,
     zipCode: "350-1130",
-    address1: "",
-    address2: "",
-    address3: "",
-    address4: "",
-    mobileMagazineFlag: "",
-    pcMagazineFlag: "",
-    pcAddress: "sheenan+test4@tigerspike.com",
-    pcMailTypeCode: "",
-    displayType: 0,
-    applyDate: "",
-    applyShopCode: "",
-    rank: "RNK00010",
-    freeTypeDetailNo1: "",
-    freeTypeFlag1: "",
-    freeType1: "",
-    freeTypeDetailNo2: "",
-    freeTypeFlag2: "",
-    freeType2: "",
-    freeTypeDetailNo3: "",
-    freeTypeFlag3: "",
-    freeType3: "",
-    freeTypeDetailNo4: "",
-    freeTypeFlag4: "",
-    freeType4: "",
-    freeTypeDetailNo5: "",
-    freeTypeFlag5: "",
-    freeType5: "",
-    freeTypeDetailNo6: "",
-    freeTypeFlag6: "",
-    freeType6: "",
-    freeTypeDetailNo7: "",
-    freeTypeFlag7: "",
-    freeType7: "",
-    freeTypeDetailNo8: "",
-    freeTypeFlag8: "",
-    freeType8: "",
-    freeTypeDetailNo9: "",
-    freeTypeFlag9: "",
-    freeType9: "",
-    freeTypeDetailNo10: "",
-    freeTypeFlag10: "",
-    freeType10: "",
-    BIKO1: "",
-    BIKO2: "",
-    BIKO3: "",
-    BIKO4: "",
-    BIKO5: "",
-    BIKO6: "",
-    BIKO7: "",
-    BIKO8: "",
-    BIKO9: "",
-    BIKO10: "",
-    mobileAutoLoginFlag: "",
-    pcAutoLoginFlag: "",
-    originalMemberId: "",
-    updateCount: 32,
-    memberCode: "8000000000000068"
+    mail: "sheenan+test4@tigerspike.com",
+    code: "8000000000000068"
   };
 
   try {
@@ -91,7 +25,7 @@ async function main() {
     await apiBase.post("/", strUTF8);
     const strShiftJIS = qs.stringify({
       ...obj,
-      memberSei: testString
+      name: testString
     });
     console.info("SHIFT-JIS", strShiftJIS);
     await apiBase.post("/", strShiftJIS);
