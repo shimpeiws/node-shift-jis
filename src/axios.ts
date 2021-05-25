@@ -10,11 +10,11 @@ async function main() {
     }
   });
 
-  const testString = "ああいい";
-  // const testString = iconv.encode("ああいい", "windows-31j");
+  const testStringOriginal = "ああいい";
+  const testString = iconv.encode(testStringOriginal, "windows-31j");
   const obj = {
     mobileAddress: "",
-    memberSei: testString,
+    memberSei: testStringOriginal,
     memberMei: "",
     memberSeiKana: "",
     memberMeiKana: "",
@@ -84,12 +84,17 @@ async function main() {
     updateCount: 32,
     memberCode: "8000000000000068"
   };
-  const str = qs.stringify(obj);
-
-  console.info("str", str);
 
   try {
-    await apiBase.post("/", str);
+    const strUTF8 = qs.stringify(obj);
+    console.info("UTF-8", strUTF8);
+    await apiBase.post("/", strUTF8);
+    const strShiftJIS = qs.stringify({
+      ...obj,
+      memberSei: testString
+    });
+    console.info("SHIFT-JIS", strShiftJIS);
+    await apiBase.post("/", strShiftJIS);
   } catch (e) {
     console.info("e", e);
   }
