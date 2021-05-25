@@ -15,7 +15,7 @@ async function main() {
   const obj = {
     name: testStringOriginal,
     zipCode: "350-1130",
-    mail: "sheenan+test4@tigerspike.com",
+    mail: "test@example.com",
     code: "8000000000000068"
   };
 
